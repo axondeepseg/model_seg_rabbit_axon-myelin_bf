@@ -26,7 +26,7 @@ To train the model, please first update the following fields in the training con
 - `gpu_ids`: specific to your hardware
 - `path_output`: where the model will be saved
 - `loader_parameters:path_data`: path to training data
-- `loader_parameters:fname_split`: null (***NOTE*** this training configuration did not use a joblib split file. The specific training image hashes can be found at the bottom of the config file)
+- `loader_parameters:fname_split`: None (***NOTE*** this training configuration did not use a joblib split file. The specific training image hashes can be found at the bottom of the config file)
 - `bids_config`: path to the custom bids config usually located in ivadomed/config/config_bids.json
 
 Then, you can train the model with
