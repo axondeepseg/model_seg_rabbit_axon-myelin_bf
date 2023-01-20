@@ -1,0 +1,186 @@
+{
+    "command": "train",
+    "gpu_ids": [
+        1
+    ],
+    "path_output": "output_vcu_only/-depth-4-loss-name-DiceLoss",
+    "model_name": "model_seg_rabbit_axon-myelin_bf",
+    "debugging": true,
+    "log_file": "log",
+    "object_detection_params": {
+        "object_detection_path": null,
+        "safety_factor": [
+            1.0,
+            1.0,
+            1.0
+        ],
+        "gpu_ids": 0,
+        "path_output": "output_vcu_only/-depth-4-loss-name-DiceLoss"
+    },
+    "wandb": {
+        "wandb_api_key": "27a747961daa727c5e879a4db0df6e73346a47c4",
+        "project_name": "vcu_training",
+        "group_name": "vcu_data_only",
+        "run_name": "exp02",
+        "log_grads_every": 100
+    },
+    "loader_parameters": {
+        "path_data": [
+            "data_axondeepseg_vcu"
+        ],
+        "subject_selection": {
+            "n": [],
+            "metadata": [],
+            "value": []
+        },
+        "target_suffix": [
+            "_seg-axon-manual",
+            "_seg-myelin-manual"
+        ],
+        "extensions": [
+            ".png",
+            ".tif"
+        ],
+        "roi_params": {
+            "suffix": null,
+            "slice_filter_roi": null
+        },
+        "contrast_params": {
+            "training_validation": [
+                "BF"
+            ],
+            "testing": [
+                "BF"
+            ],
+            "balance": {}
+        },
+        "slice_filter_params": {
+            "filter_empty_mask": false,
+            "filter_empty_input": true
+        },
+        "patch_filter_params": {
+            "filter_empty_mask": false,
+            "filter_empty_input": false
+        },
+        "slice_axis": "axial",
+        "multichannel": false,
+        "soft_gt": false,
+        "is_input_dropout": false,
+        "bids_config": "config_bids.json"
+    },
+    "split_dataset": {
+        "fname_split": null,
+        "random_seed": 4823,
+        "split_method": "sample_id",
+        "data_testing": {
+            "data_type": null,
+            "data_value": []
+        },
+        "balance": null,
+        "train_fraction": 0.7,
+        "test_fraction": 0.1
+    },
+    "training_parameters": {
+        "batch_size": 4,
+        "loss": {
+            "name": "DiceLoss"
+        },
+        "training_time": {
+            "num_epochs": 200,
+            "early_stopping_patience": 200,
+            "early_stopping_epsilon": 0.0001
+        },
+        "scheduler": {
+            "initial_lr": 0.002,
+            "lr_scheduler": {
+                "name": "CyclicLR",
+                "base_lr": 1e-05,
+                "max_lr": 0.005
+            }
+        },
+        "balance_samples": {
+            "applied": false,
+            "type": "gt"
+        },
+        "mixup_alpha": null,
+        "transfer_learning": {
+            "retrain_model": null,
+            "retrain_fraction": 1.0,
+            "reset": true
+        }
+    },
+    "default_model": {
+        "name": "Unet",
+        "dropout_rate": 0.25,
+        "bn_momentum": 0.2,
+        "depth": 4,
+        "is_2d": true,
+        "final_activation": "softmax",
+        "length_2D": [
+            512,
+            512
+        ],
+        "stride_2D": [
+            480,
+            480
+        ]
+    },
+    "uncertainty": {
+        "epistemic": false,
+        "aleatoric": false,
+        "n_it": 0
+    },
+    "postprocessing": {
+        "binarize_maxpooling": {}
+    },
+    "evaluation_parameters": {
+        "object_detection_metrics": true
+    },
+    "transformation": {
+        "RandomAffine": {
+            "degrees": 5,
+            "scale": [
+                0.1,
+                0.1
+            ],
+            "translate": [
+                0.03,
+                0.03
+            ],
+            "applied_to": [
+                "im",
+                "gt"
+            ],
+            "dataset_type": [
+                "training"
+            ]
+        },
+        "ElasticTransform": {
+            "alpha_range": [
+                28.0,
+                30.0
+            ],
+            "sigma_range": [
+                3.5,
+                4.5
+            ],
+            "p": 0.1,
+            "applied_to": [
+                "im",
+                "gt"
+            ],
+            "dataset_type": [
+                "training"
+            ]
+        },
+        "NormalizeInstance": {
+            "applied_to": [
+                "im"
+            ]
+        }
+    },
+    "training_sha256": {
+        "sub-21G2022_sample-21G2022_BF.tif": "b474c4cd705b36bb360efd33c13df7eac41bf7f6bc5fbb3319ee3272c8de83a3",
+        "sub-21G207_sample-21G207_BF.tif": "321a93968cb036c0b3f2ca5c1b0fe8fcbafae8a74b9caca44c5e59df1dcccd78"
+    }
+}
