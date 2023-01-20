@@ -1,0 +1,37 @@
+IVADOMED TOOLBOX
+----------------
+(git-master-487df8a0e3016d887974d2a9ea9dd23ca8144e2d)
+
+
+DATASET VERSION
+---------------
+The following BIDS dataset(s) were used for training.
+1. data_axondeepseg_vcu - Dataset is not Annexed.
+
+
+SYSTEM INFO
+-------------
+OS: linux (Linux-5.15.0-48-generic-x86_64-with-glibc2.10)
+CPU cores: Available: 12
+
+
+
+
+CONFIG INPUTS
+-------------
+command: train
+gpu_ids: [0]
+path_output: output_vcu_only/
+model_name: model_seg_rabbit_axon-myelin_bf
+debugging: True
+log_file: log
+object_detection_params: {'object_detection_path': None, 'safety_factor': [1.0, 1.0, 1.0], 'gpu_ids': 0, 'path_output': 'output/'}
+wandb: {'wandb_api_key': '', 'project_name': 'my_project', 'group_name': 'my_group', 'run_name': 'run-1', 'log_grads_every': 100}
+loader_parameters: {'path_data': ['data_axondeepseg_vcu'], 'subject_selection': {'n': [], 'metadata': [], 'value': []}, 'target_suffix': ['_seg-axon-manual', '_seg-myelin-manual'], 'extensions': ['.png', '.tif'], 'roi_params': {'suffix': None, 'slice_filter_roi': None}, 'contrast_params': {'training_validation': ['BF'], 'testing': ['BF'], 'balance': {}}, 'slice_filter_params': {'filter_empty_mask': False, 'filter_empty_input': True}, 'patch_filter_params': {'filter_empty_mask': False, 'filter_empty_input': False}, 'slice_axis': 'axial', 'multichannel': False, 'soft_gt': False, 'is_input_dropout': False, 'bids_config': 'config_bids.json'}
+split_dataset: {'fname_split': None, 'random_seed': 6, 'split_method': 'sample_id', 'data_testing': {'data_type': None, 'data_value': []}, 'balance': None, 'train_fraction': 0.7, 'test_fraction': 0.1}
+training_parameters: {'batch_size': 4, 'loss': {'name': 'MultiClassDiceLoss'}, 'training_time': {'num_epochs': 200, 'early_stopping_patience': 200, 'early_stopping_epsilon': 0.0001}, 'scheduler': {'initial_lr': 0.002, 'lr_scheduler': {'name': 'CyclicLR', 'base_lr': 1e-05, 'max_lr': 0.005}}, 'balance_samples': {'applied': False, 'type': 'gt'}, 'mixup_alpha': None, 'transfer_learning': {'retrain_model': None, 'retrain_fraction': 1.0, 'reset': True}}
+default_model: {'name': 'Unet', 'dropout_rate': 0.25, 'bn_momentum': 0.2, 'depth': 4, 'is_2d': True, 'final_activation': 'softmax', 'length_2D': [512, 512], 'stride_2D': [480, 480]}
+uncertainty: {'epistemic': False, 'aleatoric': False, 'n_it': 0}
+postprocessing: {'binarize_maxpooling': {}}
+evaluation_parameters: {'object_detection_metrics': True}
+transformation: {'RandomAffine': {'degrees': 5, 'scale': [0.1, 0.1], 'translate': [0.03, 0.03], 'applied_to': ['im', 'gt'], 'dataset_type': ['training']}, 'ElasticTransform': {'alpha_range': [28.0, 30.0], 'sigma_range': [3.5, 4.5], 'p': 0.1, 'applied_to': ['im', 'gt'], 'dataset_type': ['training']}, 'NormalizeInstance': {'applied_to': ['im']}}
