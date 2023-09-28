@@ -36,7 +36,7 @@ def main(args):
             "myelin": 1, 
             "axon": 2 
         },
-        "num_training": 8,
+        "numTraining": 8,
         "file_ending": ".png"
     }
     with open('nnUNet_raw/Dataset001_VCU/dataset.json', 'w') as f:
