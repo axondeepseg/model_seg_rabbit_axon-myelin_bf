@@ -29,7 +29,9 @@ def main(args):
     # create dataset.json
     dataset_info = {
         "channel_names": {
-            "0": "rgb_to_0_1"
+            "0": "R",
+            "1": "G",
+            "2": "B"
         },
         "labels": {
             "background": 0,
