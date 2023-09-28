@@ -44,8 +44,6 @@ def main(args):
 
     # save correspondence between original fnames and case IDs
     case_id_dict = {sub:i for i,sub in enumerate(subject_list)}
-    with open('subject_to_case_identifier.json', 'w') as f:
-        f.write(json.dumps(case_id_dict, indent=2))
 
     # put images in imagesTr
     # (convert TIFFs to PNGs! file endings must match)
@@ -78,6 +76,11 @@ def main(args):
         img = cv2.imread(str(img_fname))
         fname = f'VCU_{test_case_id:03d}_0000.png'
         cv2.imwrite(str(out_folder / 'imagesTs' / fname), img)
+        # add the test subject to case_id_dict
+        case_id_dict[subject] = test_case_id
+    
+    with open('subject_to_case_identifier.json', 'w') as f:
+        f.write(json.dumps(case_id_dict, indent=2))
 
 
 if __name__ == "__main__":
