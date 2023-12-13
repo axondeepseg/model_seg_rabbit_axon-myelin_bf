@@ -94,7 +94,7 @@ def process_images(
         for image in participants_to_sample_dict[subject]:
             case_id = bids_to_nnunet_dict[str((subject, image))]
             image_path = os.path.join(
-                datapath, subject, "micr", f"{subject}_{image}_acq-roi_BF.png"
+                datapath, subject, "micr", f"{subject}_{image}_BF.png"
             )
             img = cv2.imread(str(image_path), cv2.IMREAD_GRAYSCALE)
             fname = f"{dataset_name}_{case_id:03d}{image_suffix}.png"
@@ -137,7 +137,7 @@ def process_labels(
                 "labels",
                 subject,
                 "micr",
-                f"{subject}_{image}_acq-roi_BF_seg-{label_type}-manual.png",
+                f"{subject}_{image}_BF_seg-{label_type}-manual.png",
             )
             label = np.round(
                 cv2.imread(str(label_path), cv2.IMREAD_GRAYSCALE)
@@ -284,17 +284,17 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--DATASETNAME",
-        default="BF_RAT",
-        help="Name of the new dataset, defaults to BF",
+        default="BF_VCU",
+        help="Name of the new dataset, defaults to BF_VCU",
     )
     parser.add_argument(
         "--DESCRIPTION",
-        default="BF axon and myelin segmentation dataset for nnUNetv2",
+        default="BF axon and myelin segmentation dataset for nnUNetv2, from Virginia Commonwealth University",
         help="Description of the new dataset, defaults to BF segmentation dataset for nnUNetv2",
     )
     parser.add_argument(
         "--SPLITJSON",
-        default="nn_unet_scripts/train_test_split.json",
+        default="nnUNet_scripts/train_test_split.json",
         help="Path to the train_test_split.json file",
     )
     parser.add_argument(
@@ -304,9 +304,9 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--DATASETID",
-        default=3,
+        default=6,
         type=int,
-        help="ID of the dataset. This ID is formatted with 3 digits. For example, 1 becomes '001', 23 becomes '023', etc. Defaults to 3",
+        help="ID of the dataset. This ID is formatted with 3 digits. For example, 1 becomes '001', 23 becomes '023', etc. Defaults to 6.",
     )
     args = parser.parse_args()
     main(args)
