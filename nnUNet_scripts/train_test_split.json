@@ -1,0 +1,20 @@
+{
+  "train": {
+    "sample-22G1315": "sub-22G1315",
+    "sample-22G132": "sub-22G13240x5",
+    "sample-21G2022": "sub-21G2022",
+    "sample-22G1314": "sub-22G131440x1",
+    "sample-21G2031": "sub-21G2031",
+    "sample-21G207": "sub-21G207",
+    "sample-22G1323": "sub-22G132340x1"      
+  },
+  "test": {
+    "sample-22G1320": "sub-22G132040x3",
+    "sample-22G1320": "sub-22G1320",
+    "sample-22G1328": "sub-22G1328",
+    "sample-22G1329": "sub-22G1329",
+    "sample-21G204": "sub-21G204",
+    "sample-22G1311": "sub-22G1311",
+    "sample-22G1319": "sub-22G1319"
+  }
+}
